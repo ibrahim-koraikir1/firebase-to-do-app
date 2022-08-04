@@ -1,13 +1,101 @@
+:root{
+  --premier: hsl(196, 56%, 20%);
+  --white: #ffffff;
+  --secondary: #061216;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+ 
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Roboto', sans-serif;
+  
+}
+
+.app{
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--premier);
+  text-align: center;
+  height: 100vh;
+
+}
+.app h1{
+  font-size: 3rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+
+.add{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.add button{
+  padding: 1rem 1.5rem ;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  margin-left: -3px;
+  background-color: var(--white);
+}
+.add input{
+  width: 30rem;
+  padding: 1rem;
+  border: none;
+  outline: none;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.todo{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  text-align: center;
+
+}
+.list{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-radius: 7px;
+  max-width: 30rem;
+ 
+  background-color: var(--white);
+}
+.list input{
+  width: 2rem;
+  height: 2rem;
+  flex: 1;
+}
+.list p {
+  flex: 7;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.list button{
+  flex: 1;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--premier);
+}
+.completed{
+ background-color: var(--premier);
+ color: var(--white);
 }
