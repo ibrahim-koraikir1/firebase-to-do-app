@@ -14,6 +14,22 @@ import Todo from "./Todo";
 function App() {
    
   const [todo , settodo] = useState([])
+  const [input, setInput] = useState('');
+
+ // Create todo
+ const createTodo = async (e) => {
+  e.preventDefault(e);
+  if (input === '') {
+    alert('Please enter a valid todo');
+    return;
+  }
+  await addDoc(collection(storage, 'todos'), {
+    text: input,
+    completed: false,
+  });
+  setInput('');
+};
+ 
   
   useEffect(()=> {
    const  q = query(collection(storage , 'todo'))
@@ -34,22 +50,28 @@ function App() {
     });
   };
 
-      
-  const handelsubmit = (e)=>{
-      e.preventDefault()
-  }
+        // Delete todo
+  const deleteTodo = async (id) => {
+    await deleteDoc(doc(storage, 'todos', id));
+  };
+ 
   return (
     <div className="app">
        <h1> to do lest app </h1>
-       <form className="form"  onSubmit={handelsubmit}>
+       <form className="form"  onSubmit={createTodo}>
          <div className="add">
-            <input type='text' placeholder="add to do" ></input>
+            <input 
+            type='text' 
+            placeholder="add to do" 
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            ></input>
             <button >+</button> 
          </div>
 
          <div className="">
             {todo.map((todo)=>
-            <Todo todo={todo} toggleComplete={toggleComplete}/>
+            <Todo todo={todo}   deleteTodo={deleteTodo} toggleComplete={toggleComplete}/>
              
             )}
          </div>
